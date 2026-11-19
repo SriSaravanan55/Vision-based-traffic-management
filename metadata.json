@@ -1,0 +1,6 @@
+{
+  "name": "AI-Based Smart Traffic Management System",
+  "description": "Adaptive 4-way intersection signal controller with YOLOv8 + ByteTrack computer vision pipeline, emergency vehicle priority preemption, MQTT bridge, and live Traffic Ops Console.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,349 @@
+/* ==========================================================================
+   OFFICIAL GOVERNMENT & ACADEMIC OPERATIONS CONSOLE STYLES
+   Designed for:
+   - Municipal Corporations, Road Transport Authorities, Police Command Rooms
+   - University Engineering Departments, College Thesis & Project Vivas
+   - Universal Arial, Helvetica, sans-serif typography
+   ========================================================================== */
+
+.ops-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 16px 24px;
+}
+
+/* Institutional Top Header */
+.gov-top-header {
+  margin-bottom: 12px;
+  background-color: var(--header-bg);
+  border: 1px solid var(--border-card);
+  border-top: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.ops-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 18px;
+  flex-wrap: wrap;
+}
+
+.gov-brand-cluster {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.gov-seal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gov-super-title {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+
+.ops-title {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-header);
+  margin: 2px 0 1px 0;
+  white-space: nowrap;
+}
+
+.gov-sub-title {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.gov-meta-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 18px;
+  background-color: var(--badge-bg);
+  border-top: 1px solid var(--grid-line-subtle);
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.ops-junction-select {
+  background-color: var(--bg-input);
+  color: var(--accent-primary);
+  border: 1px solid var(--border-card);
+  padding: 6px 10px;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.ops-junction-select:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 1px;
+}
+
+.ops-telemetry-cluster {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ops-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+.ops-led {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.ops-led.green {
+  background-color: var(--signal-green);
+  box-shadow: 0 0 8px var(--signal-green);
+}
+
+.ops-led.amber {
+  background-color: var(--signal-amber);
+  box-shadow: 0 0 8px var(--signal-amber);
+}
+
+.ops-led.red {
+  background-color: var(--signal-red);
+  box-shadow: 0 0 8px var(--signal-red);
+}
+
+/* Control Bar */
+.ops-controlbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 10px 16px;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-card);
+  flex-wrap: wrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ops-control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ops-control-label {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+
+.ops-btn {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-border);
+  padding: 6px 12px;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+  white-space: nowrap;
+}
+
+.ops-btn:hover:not(:disabled) {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.ops-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ops-btn.active {
+  background-color: var(--btn-active-bg);
+  border-color: var(--btn-active-bg);
+  color: var(--btn-active-text);
+}
+
+.ops-btn.emergency-btn {
+  border-color: var(--signal-red);
+  color: var(--signal-red);
+}
+
+.ops-btn.emergency-btn:hover:not(:disabled) {
+  background-color: var(--signal-red-dim);
+}
+
+.ops-btn.emergency-btn.active {
+  background-color: var(--signal-red);
+  border-color: var(--signal-red);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Emergency Banner */
+.ops-emergency-banner {
+  margin-bottom: 14px;
+  padding: 12px 18px;
+  background-color: var(--signal-red-dim);
+  border: 1.5px solid var(--signal-red);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ops-emergency-banner-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--signal-red);
+}
+
+.ops-emergency-right-of-way {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--signal-green);
+}
+
+/* Panels & Cards */
+.ops-panel,
+.ops-card {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-card);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ops-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--grid-line-subtle);
+}
+
+.ops-panel-title {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent-primary);
+  margin: 0;
+}
+
+.ops-panel-subtitle {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.ops-lane-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+/* Bottom Event Log & SDG 11 Telemetry */
+.ops-bottom-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+@media (max-width: 1080px) {
+  .ops-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ops-log-list {
+  max-height: 240px;
+  overflow-y: auto;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.76rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ops-log-entry {
+  display: grid;
+  grid-template-columns: 92px 86px 1fr;
+  gap: 10px;
+  padding: 6px 8px;
+  background-color: var(--bg-canvas-subtle);
+  border-left: 3px solid var(--border-card);
+  align-items: baseline;
+}
+
+.ops-log-entry.emergency {
+  border-left-color: var(--signal-red);
+  background-color: var(--signal-red-dim);
+}
+
+.ops-log-entry.cycle {
+  border-left-color: var(--accent-primary);
+}
+
+.ops-log-entry.mqtt {
+  border-left-color: var(--signal-amber);
+}
+
+.ops-log-entry.input {
+  border-left-color: var(--signal-green);
+}

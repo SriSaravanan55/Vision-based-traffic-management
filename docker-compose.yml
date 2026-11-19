@@ -1,0 +1,30 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: traffic_mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+    restart: unless-stopped
+
+  python-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: traffic_python_api
+    depends_on:
+      - mosquitto
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHON_API_HOST=0.0.0.0
+      - PYTHON_API_PORT=8000
+      - MQTT_BROKER_HOST=mosquitto
+      - MQTT_BROKER_PORT=1883
+      - SDL_VIDEODRIVER=dummy
+      - TRAFFIC_DB_PATH=/app/data/traffic_history.db
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

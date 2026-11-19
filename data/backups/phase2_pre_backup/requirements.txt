@@ -1,0 +1,9 @@
+# Core computer vision & tracking (Python 3.10 - 3.12)
+ultralytics>=8.1.0,<9.0.0
+opencv-python>=4.9.0.80
+numpy>=1.26.0,<3.0.0
+lapx>=0.5.5
+
+# Messaging & simulation (required for --demo mode)
+paho-mqtt>=2.0.0,<3.0.0
+pygame>=2.5.2,<3.0.0

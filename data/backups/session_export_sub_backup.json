@@ -1,0 +1,418 @@
+{
+  "total_cycles": 8,
+  "avg_green_time_by_lane": {
+    "north": 20.12,
+    "south": 20.12,
+    "east": 19.62,
+    "west": 14.0
+  },
+  "busiest_lane_counts": {
+    "north": 1,
+    "south": 2,
+    "east": 3,
+    "west": 2
+  },
+  "emergency_events": [
+    {
+      "ts": "2026-10-01T04:46:41.094Z",
+      "lane": "south"
+    },
+    {
+      "ts": "2026-10-01T04:46:40.947Z",
+      "lane": "north"
+    }
+  ],
+  "waiting_time_comparison": {
+    "fixed_baseline_wait_s": 78.75,
+    "adaptive_wait_s": 44.81,
+    "wait_reduction_s": 33.94,
+    "wait_reduction_pct": 43.1,
+    "total_vehicles_evaluated": 435,
+    "fuel_saved_liters": 3.9,
+    "co2_saved_kg": 9.17,
+    "per_lane": {
+      "north": {
+        "fixed_wait_seconds": 78.75,
+        "adaptive_wait_seconds": 47.46,
+        "reduction_pct": 39.7
+      },
+      "south": {
+        "fixed_wait_seconds": 78.75,
+        "adaptive_wait_seconds": 47.54,
+        "reduction_pct": 39.6
+      },
+      "east": {
+        "fixed_wait_seconds": 78.75,
+        "adaptive_wait_seconds": 47.45,
+        "reduction_pct": 39.7
+      },
+      "west": {
+        "fixed_wait_seconds": 78.75,
+        "adaptive_wait_seconds": 54.34,
+        "reduction_pct": 31.0
+      }
+    }
+  },
+  "predictions": {
+    "model": "OLS Linear Trend Regression (Rolling 12-Cycle Window)",
+    "horizon": "Next 5 Minutes",
+    "mae": 12.82,
+    "rmse": 15.99,
+    "evaluated_samples": 24,
+    "lanes": {
+      "north": {
+        "lane": "north",
+        "predicted_score": 14.04,
+        "predicted_level": "Medium",
+        "predicted_code": "MEDIUM",
+        "samples_used": 8,
+        "lane_mae": 9.79
+      },
+      "south": {
+        "lane": "south",
+        "predicted_score": 12.41,
+        "predicted_level": "Medium",
+        "predicted_code": "MEDIUM",
+        "samples_used": 8,
+        "lane_mae": 14.84
+      },
+      "east": {
+        "lane": "east",
+        "predicted_score": 13.55,
+        "predicted_level": "Medium",
+        "predicted_code": "MEDIUM",
+        "samples_used": 8,
+        "lane_mae": 11.67
+      },
+      "west": {
+        "lane": "west",
+        "predicted_score": 24.94,
+        "predicted_level": "High",
+        "predicted_code": "HIGH",
+        "samples_used": 8,
+        "lane_mae": 14.97
+      }
+    }
+  },
+  "system_events": [
+    {
+      "ts": "2026-10-01T04:46:41.094Z",
+      "event_type": "Emergency Preemption",
+      "road": "South",
+      "detail": "Immediate 25s GREEN granted via safe YELLOW->ALL_RED clearance",
+      "status": "Active Override"
+    },
+    {
+      "ts": "2026-10-01T04:46:40.947Z",
+      "event_type": "Starvation Protection",
+      "road": "West",
+      "detail": "Max wait 90.7s > 90s; priority boost +35 applied",
+      "status": "Fairness Boost"
+    },
+    {
+      "ts": "2026-10-01T04:46:40.947Z",
+      "event_type": "Emergency Preemption",
+      "road": "North",
+      "detail": "Immediate 25s GREEN granted via safe YELLOW->ALL_RED clearance",
+      "status": "Active Override"
+    }
+  ],
+  "recent_cycles": [
+    {
+      "ts": "2026-10-01T04:46:41.094Z",
+      "lanes": {
+        "north": {
+          "vehicle_total": 11,
+          "weighted_score": 10.5,
+          "density_level": "Medium",
+          "density_share": 0.1628,
+          "green_seconds": 0,
+          "mode": "hold"
+        },
+        "south": {
+          "vehicle_total": 8,
+          "weighted_score": 13.0,
+          "density_level": "Medium",
+          "density_share": 0.2016,
+          "green_seconds": 25,
+          "mode": "emergency"
+        },
+        "east": {
+          "vehicle_total": 12,
+          "weighted_score": 13.0,
+          "density_level": "Medium",
+          "density_share": 0.2016,
+          "green_seconds": 0,
+          "mode": "hold"
+        },
+        "west": {
+          "vehicle_total": 30,
+          "weighted_score": 28.0,
+          "density_level": "High",
+          "density_share": 0.4341,
+          "green_seconds": 0,
+          "mode": "hold"
+        }
+      }
+    },
+    {
+      "ts": "2026-10-01T04:46:41.057Z",
+      "lanes": {
+        "north": {
+          "vehicle_total": 10,
+          "weighted_score": 10.5,
+          "density_level": "Medium",
+          "density_share": 0.2039,
+          "green_seconds": 21,
+          "mode": "normal"
+        },
+        "south": {
+          "vehicle_total": 3,
+          "weighted_score": 2.0,
+          "density_level": "Low",
+          "density_share": 0.0388,
+          "green_seconds": 16,
+          "mode": "normal"
+        },
+        "east": {
+          "vehicle_total": 30,
+          "weighted_score": 28.5,
+          "density_level": "High",
+          "density_share": 0.5534,
+          "green_seconds": 32,
+          "mode": "normal"
+        },
+        "west": {
+          "vehicle_total": 9,
+          "weighted_score": 10.5,
+          "density_level": "Medium",
+          "density_share": 0.2039,
+          "green_seconds": 21,
+          "mode": "normal"
+        }
+      }
+    },
+    {
+      "ts": "2026-10-01T04:46:41.021Z",
+      "lanes": {
+        "north": {
+          "vehicle_total": 11,
+          "weighted_score": 11.0,
+          "density_level": "Medium",
+          "density_share": 0.1913,
+          "green_seconds": 21,
+          "mode": "normal"
+        },
+        "south": {
+          "vehicle_total": 30,
+          "weighted_score": 29.5,
+          "density_level": "High",
+          "density_share": 0.513,
+          "green_seconds": 30,
+          "mode": "normal"
+        },
+        "east": {
+          "vehicle_total": 9,
+          "weighted_score": 8.5,
+          "density_level": "Medium",
+          "density_share": 0.1478,
+          "green_seconds": 19,
+          "mode": "normal"
+        },
+        "west": {
+          "vehicle_total": 10,
+          "weighted_score": 8.5,
+          "density_level": "Medium",
+          "density_share": 0.1478,
+          "green_seconds": 19,
+          "mode": "normal"
+        }
+      }
+    },
+    {
+      "ts": "2026-10-01T04:46:40.985Z",
+      "lanes": {
+        "north": {
+          "vehicle_total": 30,
+          "weighted_score": 32.5,
+          "density_level": "Very High",
+          "density_share": 0.5804,
+          "green_seconds": 32,
+          "mode": "normal"
+        },
+        "south": {
+          "vehicle_total": 8,
+          "weighted_score": 6.0,
+          "density_level": "Low",
+          "density_share": 0.1071,
+          "green_seconds": 18,
+          "mode": "normal"
+        },
+        "east": {
+          "vehicle_total": 10,
+          "weighted_score": 8.5,
+          "density_level": "Medium",
+          "density_share": 0.1518,
+          "green_seconds": 20,
+          "mode": "normal"
+        },
+        "west": {
+          "vehicle_total": 11,
+          "weighted_score": 9.0,
+          "density_level": "Medium",
+          "density_share": 0.1607,
+          "green_seconds": 20,
+          "mode": "normal"
+        }
+      }
+    },
+    {
+      "ts": "2026-10-01T04:46:40.947Z",
+      "lanes": {
+        "north": {
+          "vehicle_total": 13,
+          "weighted_score": 14.0,
+          "density_level": "Medium",
+          "density_share": 0.2059,
+          "green_seconds": 25,
+          "mode": "emergency"
+        },
+        "south": {
+          "vehicle_total": 7,
+          "weighted_score": 7.5,
+          "density_level": "Low",
+          "density_share": 0.1103,
+          "green_seconds": 0,
+          "mode": "hold"
+        },
+        "east": {
+          "vehicle_total": 11,
+          "weighted_score": 11.0,
+          "density_level": "Medium",
+          "density_share": 0.1618,
+          "green_seconds": 0,
+          "mode": "hold"
+        },
+        "west": {
+          "vehicle_total": 36,
+          "weighted_score": 35.5,
+          "density_level": "Very High",
+          "density_share": 0.5221,
+          "green_seconds": 0,
+          "mode": "hold"
+        }
+      }
+    },
+    {
+      "ts": "2026-10-01T04:46:40.910Z",
+      "lanes": {
+        "north": {
+          "vehicle_total": 7,
+          "weighted_score": 8.5,
+          "density_level": "Medium",
+          "density_share": 0.17,
+          "green_seconds": 20,
+          "mode": "normal"
+        },
+        "south": {
+          "vehicle_total": 9,
+          "weighted_score": 9.5,
+          "density_level": "Medium",
+          "density_share": 0.19,
+          "green_seconds": 21,
+          "mode": "normal"
+        },
+        "east": {
+          "vehicle_total": 25,
+          "weighted_score": 26.0,
+          "density_level": "High",
+          "density_share": 0.52,
+          "green_seconds": 31,
+          "mode": "normal"
+        },
+        "west": {
+          "vehicle_total": 7,
+          "weighted_score": 6.0,
+          "density_level": "Low",
+          "density_share": 0.12,
+          "green_seconds": 19,
+          "mode": "normal"
+        }
+      }
+    },
+    {
+      "ts": "2026-10-01T04:46:40.874Z",
+      "lanes": {
+        "north": {
+          "vehicle_total": 9,
+          "weighted_score": 8.5,
+          "density_level": "Medium",
+          "density_share": 0.191,
+          "green_seconds": 21,
+          "mode": "normal"
+        },
+        "south": {
+          "vehicle_total": 26,
+          "weighted_score": 25.0,
+          "density_level": "High",
+          "density_share": 0.5618,
+          "green_seconds": 32,
+          "mode": "normal"
+        },
+        "east": {
+          "vehicle_total": 9,
+          "weighted_score": 8.5,
+          "density_level": "Medium",
+          "density_share": 0.191,
+          "green_seconds": 21,
+          "mode": "normal"
+        },
+        "west": {
+          "vehicle_total": 4,
+          "weighted_score": 2.5,
+          "density_level": "Low",
+          "density_share": 0.0562,
+          "green_seconds": 17,
+          "mode": "normal"
+        }
+      }
+    },
+    {
+      "ts": "2026-10-01T04:46:40.838Z",
+      "lanes": {
+        "north": {
+          "vehicle_total": 10,
+          "weighted_score": 9.0,
+          "density_level": "Medium",
+          "density_share": 0.2143,
+          "green_seconds": 21,
+          "mode": "normal"
+        },
+        "south": {
+          "vehicle_total": 5,
+          "weighted_score": 5.0,
+          "density_level": "Low",
+          "density_share": 0.119,
+          "green_seconds": 19,
+          "mode": "normal"
+        },
+        "east": {
+          "vehicle_total": 23,
+          "weighted_score": 26.0,
+          "density_level": "High",
+          "density_share": 0.619,
+          "green_seconds": 34,
+          "mode": "normal"
+        },
+        "west": {
+          "vehicle_total": 2,
+          "weighted_score": 2.0,
+          "density_level": "Low",
+          "density_share": 0.0476,
+          "green_seconds": 16,
+          "mode": "normal"
+        }
+      }
+    }
+  ]
+}

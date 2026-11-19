@@ -1,0 +1,659 @@
+{
+  "db_path": "/app/applet/data/traffic_history.db",
+  "active_session_id": "sess-20261118143112-35f9ee",
+  "last_active_green_lane": "north",
+  "total_cycles": 4,
+  "historical_total_cycles": 15,
+  "avg_green_time_by_lane": {
+    "north": 21.75,
+    "south": 18.0,
+    "east": 21.5,
+    "west": 13.0
+  },
+  "busiest_lane_counts": {
+    "north": 0,
+    "south": 1,
+    "east": 2,
+    "west": 1
+  },
+  "emergency_events": [
+    {
+      "ts": "2026-11-18T14:31:13.201Z",
+      "lane": "north",
+      "junction_id": "JCT-01"
+    }
+  ],
+  "system_events": [
+    {
+      "ts": "2026-11-18T14:31:13.201Z",
+      "event_type": "Starvation Protection",
+      "road": "West",
+      "detail": "Max wait 90.7s > 90s; priority boost +35 applied",
+      "status": "Fairness Boost",
+      "junction_id": "JCT-01"
+    },
+    {
+      "ts": "2026-11-18T14:31:13.201Z",
+      "event_type": "Emergency Preemption",
+      "road": "North",
+      "detail": "Immediate 25s GREEN granted via safe YELLOW->ALL_RED clearance",
+      "status": "Active Override",
+      "junction_id": "JCT-01"
+    }
+  ],
+  "waiting_time_comparison": {
+    "fixed_baseline_wait_s": 78.75,
+    "adaptive_wait_s": 43.35,
+    "wait_reduction_s": 35.4,
+    "wait_reduction_pct": 44.95,
+    "total_vehicles_evaluated": 203,
+    "fuel_saved_liters": 1.9,
+    "co2_saved_kg": 4.46,
+    "per_lane": {
+      "north": {
+        "fixed_wait_seconds": 78.75,
+        "adaptive_wait_seconds": 46.52,
+        "reduction_pct": 40.9
+      },
+      "south": {
+        "fixed_wait_seconds": 78.75,
+        "adaptive_wait_seconds": 49.76,
+        "reduction_pct": 36.8
+      },
+      "east": {
+        "fixed_wait_seconds": 78.75,
+        "adaptive_wait_seconds": 45.53,
+        "reduction_pct": 42.2
+      },
+      "west": {
+        "fixed_wait_seconds": 78.75,
+        "adaptive_wait_seconds": 56.0,
+        "reduction_pct": 28.9
+      }
+    }
+  },
+  "predictions": {
+    "model": "OLS Linear Trend Regression (Rolling 12-Cycle Window)",
+    "horizon": "Next 5 Minutes",
+    "mae": 13.98,
+    "rmse": 17.95,
+    "evaluated_samples": 8,
+    "lanes": {
+      "north": {
+        "lane": "north",
+        "predicted_score": 13.82,
+        "predicted_level": "Medium",
+        "predicted_code": "MEDIUM",
+        "samples_used": 4,
+        "lane_mae": 3.04
+      },
+      "south": {
+        "lane": "south",
+        "predicted_score": 9.07,
+        "predicted_level": "Medium",
+        "predicted_code": "MEDIUM",
+        "samples_used": 4,
+        "lane_mae": 18.61
+      },
+      "east": {
+        "lane": "east",
+        "predicted_score": 11.0,
+        "predicted_level": "Medium",
+        "predicted_code": "MEDIUM",
+        "samples_used": 4,
+        "lane_mae": 18.46
+      },
+      "west": {
+        "lane": "west",
+        "predicted_score": 36.9,
+        "predicted_level": "Very High",
+        "predicted_code": "VERY_HIGH",
+        "samples_used": 4,
+        "lane_mae": 15.8
+      }
+    }
+  },
+  "hardware": {
+    "active_green_lane": "north",
+    "simulation_mode": true,
+    "hardware_mode": false,
+    "interlock_ok": true,
+    "gpio_pin_map": {
+      "north": {
+        "RED": 17,
+        "YELLOW": 27,
+        "GREEN": 22
+      },
+      "south": {
+        "RED": 23,
+        "YELLOW": 24,
+        "GREEN": 25
+      },
+      "east": {
+        "RED": 5,
+        "YELLOW": 6,
+        "GREEN": 13
+      },
+      "west": {
+        "RED": 19,
+        "YELLOW": 26,
+        "GREEN": 21
+      }
+    },
+    "pin_states": {
+      "north": {
+        "signal": "GREEN",
+        "bcm_pins": {
+          "RED": 17,
+          "YELLOW": 27,
+          "GREEN": 22
+        },
+        "active_pin": 22
+      },
+      "south": {
+        "signal": "RED",
+        "bcm_pins": {
+          "RED": 23,
+          "YELLOW": 24,
+          "GREEN": 25
+        },
+        "active_pin": 23
+      },
+      "east": {
+        "signal": "RED",
+        "bcm_pins": {
+          "RED": 5,
+          "YELLOW": 6,
+          "GREEN": 13
+        },
+        "active_pin": 5
+      },
+      "west": {
+        "signal": "RED",
+        "bcm_pins": {
+          "RED": 19,
+          "YELLOW": 26,
+          "GREEN": 21
+        },
+        "active_pin": 19
+      }
+    }
+  },
+  "priority_config": {
+    "weights": {
+      "density_weight": 0.35,
+      "queue_weight": 0.25,
+      "waiting_weight": 0.2,
+      "prediction_weight": 0.1,
+      "pedestrian_weight": 0.1
+    },
+    "max_waiting_time": 90,
+    "queue_estimation_method": "meter-estimated"
+  },
+  "recent_cycles": [
+    {
+      "ts": "2026-11-18T14:31:13.201Z",
+      "junction_id": "JCT-01",
+      "lanes": {
+        "west": {
+          "vehicle_total": 36,
+          "weighted_score": 35.5,
+          "density_level": "Very High",
+          "density_share": 0.5221,
+          "green_seconds": 0,
+          "mode": "hold"
+        },
+        "east": {
+          "vehicle_total": 11,
+          "weighted_score": 11.0,
+          "density_level": "Medium",
+          "density_share": 0.1618,
+          "green_seconds": 0,
+          "mode": "hold"
+        },
+        "south": {
+          "vehicle_total": 7,
+          "weighted_score": 7.5,
+          "density_level": "Low",
+          "density_share": 0.1103,
+          "green_seconds": 0,
+          "mode": "hold"
+        },
+        "north": {
+          "vehicle_total": 13,
+          "weighted_score": 14.0,
+          "density_level": "Medium",
+          "density_share": 0.2059,
+          "green_seconds": 25,
+          "mode": "emergency"
+        }
+      }
+    },
+    {
+      "ts": "2026-11-18T14:31:13.163Z",
+      "junction_id": "JCT-01",
+      "lanes": {
+        "west": {
+          "vehicle_total": 7,
+          "weighted_score": 6.0,
+          "density_level": "Low",
+          "density_share": 0.12,
+          "green_seconds": 19,
+          "mode": "normal"
+        },
+        "east": {
+          "vehicle_total": 25,
+          "weighted_score": 26.0,
+          "density_level": "High",
+          "density_share": 0.52,
+          "green_seconds": 31,
+          "mode": "normal"
+        },
+        "south": {
+          "vehicle_total": 9,
+          "weighted_score": 9.5,
+          "density_level": "Medium",
+          "density_share": 0.19,
+          "green_seconds": 21,
+          "mode": "normal"
+        },
+        "north": {
+          "vehicle_total": 7,
+          "weighted_score": 8.5,
+          "density_level": "Medium",
+          "density_share": 0.17,
+          "green_seconds": 20,
+          "mode": "normal"
+        }
+      }
+    },
+    {
+      "ts": "2026-11-18T14:31:13.126Z",
+      "junction_id": "JCT-01",
+      "lanes": {
+        "west": {
+          "vehicle_total": 4,
+          "weighted_score": 2.5,
+          "density_level": "Low",
+          "density_share": 0.0562,
+          "green_seconds": 17,
+          "mode": "normal"
+        },
+        "east": {
+          "vehicle_total": 9,
+          "weighted_score": 8.5,
+          "density_level": "Medium",
+          "density_share": 0.191,
+          "green_seconds": 21,
+          "mode": "normal"
+        },
+        "south": {
+          "vehicle_total": 26,
+          "weighted_score": 25.0,
+          "density_level": "High",
+          "density_share": 0.5618,
+          "green_seconds": 32,
+          "mode": "normal"
+        },
+        "north": {
+          "vehicle_total": 9,
+          "weighted_score": 8.5,
+          "density_level": "Medium",
+          "density_share": 0.191,
+          "green_seconds": 21,
+          "mode": "normal"
+        }
+      }
+    },
+    {
+      "ts": "2026-11-18T14:31:13.086Z",
+      "junction_id": "JCT-01",
+      "lanes": {
+        "west": {
+          "vehicle_total": 2,
+          "weighted_score": 2.0,
+          "density_level": "Low",
+          "density_share": 0.0476,
+          "green_seconds": 16,
+          "mode": "normal"
+        },
+        "east": {
+          "vehicle_total": 23,
+          "weighted_score": 26.0,
+          "density_level": "High",
+          "density_share": 0.619,
+          "green_seconds": 34,
+          "mode": "normal"
+        },
+        "south": {
+          "vehicle_total": 5,
+          "weighted_score": 5.0,
+          "density_level": "Low",
+          "density_share": 0.119,
+          "green_seconds": 19,
+          "mode": "normal"
+        },
+        "north": {
+          "vehicle_total": 10,
+          "weighted_score": 9.0,
+          "density_level": "Medium",
+          "density_share": 0.2143,
+          "green_seconds": 21,
+          "mode": "normal"
+        }
+      }
+    }
+  ],
+  "junctions": {
+    "JCT-01": {
+      "id": "JCT-01",
+      "name": "JCT-01 \u00b7 4-Way Arterial Hub",
+      "label": "JCT-01 \u00b7 4-Way Arterial Hub",
+      "city": "Metropolitan Sector 1",
+      "coordinates": "12.9716\u00b0 N, 77.5946\u00b0 E",
+      "controllerSpec": "Adaptive ATCS \u00b7 4-Phase Isolated Control",
+      "approaches": {
+        "north": {
+          "road": "North Arterial Boulevard",
+          "lanes": 3,
+          "speedKmh": 50
+        },
+        "south": {
+          "road": "South Arterial Boulevard",
+          "lanes": 3,
+          "speedKmh": 50
+        },
+        "east": {
+          "road": "East Commercial Avenue",
+          "lanes": 2,
+          "speedKmh": 40
+        },
+        "west": {
+          "road": "West Commercial Avenue",
+          "lanes": 2,
+          "speedKmh": 40
+        }
+      }
+    },
+    "JCT-02": {
+      "id": "JCT-02",
+      "name": "JCT-02 \u00b7 Downtown Commercial Crossway",
+      "label": "JCT-02 \u00b7 Downtown Commercial Crossway",
+      "city": "Central Commercial District",
+      "coordinates": "12.9780\u00b0 N, 77.6010\u00b0 E",
+      "controllerSpec": "Pedestrian & Transit Coordinated ATCS",
+      "approaches": {
+        "north": {
+          "road": "Main Market Street North",
+          "lanes": 2,
+          "speedKmh": 35
+        },
+        "south": {
+          "road": "Main Market Street South",
+          "lanes": 2,
+          "speedKmh": 35
+        },
+        "east": {
+          "road": "Cross Commercial Lane East",
+          "lanes": 2,
+          "speedKmh": 35
+        },
+        "west": {
+          "road": "Cross Commercial Lane West",
+          "lanes": 2,
+          "speedKmh": 35
+        }
+      }
+    },
+    "JCT-03": {
+      "id": "JCT-03",
+      "name": "JCT-03 \u00b7 Outer Ring Road 4-Way Junction",
+      "label": "JCT-03 \u00b7 Outer Ring Road 4-Way Junction",
+      "city": "Perimeter Expressway Hub",
+      "coordinates": "12.9352\u00b0 N, 77.6245\u00b0 E",
+      "controllerSpec": "High-Throughput Express Traffic Control",
+      "approaches": {
+        "north": {
+          "road": "Expressway Northbound",
+          "lanes": 3,
+          "speedKmh": 65
+        },
+        "south": {
+          "road": "Expressway Southbound",
+          "lanes": 3,
+          "speedKmh": 65
+        },
+        "east": {
+          "road": "Industrial Access Link East",
+          "lanes": 2,
+          "speedKmh": 45
+        },
+        "west": {
+          "road": "Logistics Corridor West",
+          "lanes": 2,
+          "speedKmh": 45
+        }
+      }
+    },
+    "JCT-04": {
+      "id": "JCT-04",
+      "name": "JCT-04 \u00b7 Multi-Modal Freight Crossway",
+      "label": "JCT-04 \u00b7 Multi-Modal Freight Crossway",
+      "city": "Metropolitan Sector 4",
+      "coordinates": "12.9177\u00b0 N, 77.6238\u00b0 E",
+      "controllerSpec": "Freight & Transit Priority ATCS",
+      "approaches": {
+        "north": {
+          "road": "North Freight Corridor",
+          "lanes": 3,
+          "speedKmh": 55
+        },
+        "south": {
+          "road": "Elevated Expressway South",
+          "lanes": 3,
+          "speedKmh": 60
+        },
+        "east": {
+          "road": "Outer Ring Road East",
+          "lanes": 2,
+          "speedKmh": 50
+        },
+        "west": {
+          "road": "Arterial Bypass West",
+          "lanes": 2,
+          "speedKmh": 45
+        }
+      }
+    }
+  },
+  "presets": {
+    "auto": {
+      "id": "auto",
+      "label": "Auto Diurnal Demand (Adaptive Cycling)"
+    },
+    "acceptance_east": {
+      "id": "acceptance_east",
+      "label": "East Corridor Rush (20 Cars + 3 Trucks \u00b7 Score 26 \u00b7 Share 0.62)",
+      "counts": {
+        "north": {
+          "motorcycle": 4,
+          "car": 5,
+          "bus": 1,
+          "truck": 0,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "south": {
+          "motorcycle": 2,
+          "car": 2,
+          "bus": 0,
+          "truck": 1,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "east": {
+          "motorcycle": 0,
+          "car": 20,
+          "bus": 0,
+          "truck": 3,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "west": {
+          "motorcycle": 0,
+          "car": 2,
+          "bus": 0,
+          "truck": 0,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        }
+      }
+    },
+    "morning_peak": {
+      "id": "morning_peak",
+      "label": "09:00 AM Central Business District Commuter Surge",
+      "counts": {
+        "north": {
+          "motorcycle": 16,
+          "car": 18,
+          "bus": 3,
+          "truck": 1,
+          "bicycle": 1,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "south": {
+          "motorcycle": 6,
+          "car": 7,
+          "bus": 1,
+          "truck": 0,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "east": {
+          "motorcycle": 12,
+          "car": 14,
+          "bus": 2,
+          "truck": 1,
+          "bicycle": 1,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "west": {
+          "motorcycle": 4,
+          "car": 5,
+          "bus": 1,
+          "truck": 0,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        }
+      }
+    },
+    "evening_corridor": {
+      "id": "evening_corridor",
+      "label": "18:30 PM Institutional & Tech Corridor Outbound Wave",
+      "counts": {
+        "north": {
+          "motorcycle": 5,
+          "car": 6,
+          "bus": 1,
+          "truck": 0,
+          "bicycle": 1,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "south": {
+          "motorcycle": 22,
+          "car": 21,
+          "bus": 4,
+          "truck": 1,
+          "bicycle": 2,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "east": {
+          "motorcycle": 10,
+          "car": 11,
+          "bus": 2,
+          "truck": 1,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "west": {
+          "motorcycle": 4,
+          "car": 4,
+          "bus": 0,
+          "truck": 1,
+          "bicycle": 1,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        }
+      }
+    },
+    "heavy_ns": {
+      "id": "heavy_ns",
+      "label": "23:30 PM National Highway Freight & Container Surge",
+      "counts": {
+        "north": {
+          "motorcycle": 2,
+          "car": 6,
+          "bus": 1,
+          "truck": 9,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "south": {
+          "motorcycle": 1,
+          "car": 5,
+          "bus": 1,
+          "truck": 8,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "east": {
+          "motorcycle": 2,
+          "car": 3,
+          "bus": 0,
+          "truck": 1,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        },
+        "west": {
+          "motorcycle": 1,
+          "car": 2,
+          "bus": 0,
+          "truck": 1,
+          "bicycle": 0,
+          "ambulance": 0,
+          "fire_truck": 0,
+          "police_vehicle": 0
+        }
+      }
+    }
+  }
+}
