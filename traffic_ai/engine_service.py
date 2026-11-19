@@ -112,9 +112,9 @@ class TrafficEngineService:
         # Lazy detector initialized once on startup (model weights remain unloaded in software mode)
         self.detector = VehicleDetector()
 
-        # Optional resilient MQTT bridge (never crashes if broker is unreachable)
+        # Optional resilient MQTT bridge (connects in background thread so offline broker never delays API server startup)
         self.mqtt_bridge = MqttBridge()
-        self.mqtt_bridge.connect()
+        threading.Thread(target=self.mqtt_bridge.connect, daemon=True, name="mqtt-connect-worker").start()
 
         self.current_phase: Dict[str, Any] = {
             "stage": "GREEN" if self.hw_controller.active_green_lane else "STANDBY",

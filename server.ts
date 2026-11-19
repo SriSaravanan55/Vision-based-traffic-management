@@ -1,7 +1,11 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express, { type Request, type Response } from 'express';
 import { createServer as createViteServer } from 'vite';
 import { spawn, type ChildProcess } from 'child_process';
 import path from 'path';
+import fs from 'fs';
 
 const PORT = Number(process.env.PORT || 3000);
 const WORKSPACE_ROOT = process.cwd();
@@ -70,6 +74,46 @@ async function checkPythonHealth(timeoutMs = 2000): Promise<{
   }
 }
 
+function resolvePythonBinary(): string {
+  const isWindows = process.platform === 'win32';
+
+  // 1. Explicit environment variable override from .env or process.env
+  if (process.env.PYTHON_PATH && process.env.PYTHON_PATH.trim() !== '') {
+    const candidate = path.isAbsolute(process.env.PYTHON_PATH)
+      ? process.env.PYTHON_PATH
+      : path.resolve(WORKSPACE_ROOT, process.env.PYTHON_PATH);
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  // 2. Project virtual environment (.venv)
+  const venvPython = isWindows
+    ? path.join(WORKSPACE_ROOT, '.venv', 'Scripts', 'python.exe')
+    : path.join(WORKSPACE_ROOT, '.venv', 'bin', 'python');
+  if (fs.existsSync(venvPython)) {
+    return venvPython;
+  }
+
+  // 3. Check Windows user programs directory fallback
+  if (isWindows) {
+    const localAppData = process.env.LOCALAPPDATA || '';
+    if (localAppData) {
+      const candidates = [
+        path.join(localAppData, 'Programs', 'Python', 'Python312', 'python.exe'),
+        path.join(localAppData, 'Programs', 'Python', 'Python313', 'python.exe'),
+        path.join(localAppData, 'Programs', 'Python', 'Python311', 'python.exe'),
+      ];
+      for (const c of candidates) {
+        if (fs.existsSync(c)) return c;
+      }
+    }
+    return 'python';
+  }
+
+  return 'python3';
+}
+
 async function ensurePythonServiceRunning(): Promise<void> {
   const existing = await checkPythonHealth(1500);
   if (existing.healthy) {
@@ -84,11 +128,12 @@ async function ensurePythonServiceRunning(): Promise<void> {
     return;
   }
 
+  const pythonBin = resolvePythonBinary();
   console.log(
-    `[gateway] Spawning persistent Python Traffic AI service (${PYTHON_API_HOST}:${PYTHON_API_PORT})...`
+    `[gateway] Spawning persistent Python Traffic AI service (${PYTHON_API_HOST}:${PYTHON_API_PORT}) via ${pythonBin}...`
   );
 
-  const child = spawn('python3', ['-u', '-m', 'traffic_ai.api_server'], {
+  const child = spawn(pythonBin, ['-u', '-m', 'traffic_ai.api_server'], {
     cwd: WORKSPACE_ROOT,
     env: {
       ...process.env,
@@ -121,7 +166,7 @@ async function ensurePythonServiceRunning(): Promise<void> {
     }
   });
 
-  const deadline = Date.now() + 10000;
+  const deadline = Date.now() + 15000;
   while (Date.now() < deadline) {
     if (!managedPythonProc || managedPythonProc.exitCode !== null) {
       throw new Error('Python Traffic AI service terminated during startup.');
