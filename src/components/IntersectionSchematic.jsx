@@ -22,7 +22,7 @@ const VEHICLE_SPECS = {
   truck: { length: 40, width: 16, maxSpeed: 1.65, color: '#f97316', roof: '#ea580c', label: 'TRUCK' },
   ambulance: { length: 30, width: 15, maxSpeed: 3.1, color: '#ffffff', roof: '#ef4444', label: 'AMB', emergency: true },
   fire_truck: { length: 42, width: 16, maxSpeed: 2.9, color: '#ef4444', roof: '#b91c1c', label: 'FIRE', emergency: true },
-  police_vehicle: { length: 28, width: 14, maxSpeed: 3.2, color: '#1e293b', roof: '#3b82f6', label: 'POL', emergency: true },
+  police_vehicle: { length: 28, width: 14, maxSpeed: 3.2, color: '#1e293b', roof: '#3b82f6', label: 'EMG', emergency: true },
 };
 
 function getSignalColor(isGreen, mode) {
@@ -892,7 +892,7 @@ export default function IntersectionSchematic({
                     y={nodePos.cy + 5}
                     fill={isGreen ? 'var(--signal-green)' : 'var(--cad-label)'}
                     textAnchor={lane === 'east' || lane === 'south' ? 'start' : 'end'}
-                    fontFamily="Arial, Helvetica, sans-serif"
+                    fontFamily="Inter, system-ui, -apple-system, sans-serif"
                     fontSize="12"
                     fontWeight="700"
                   >

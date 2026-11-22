@@ -86,16 +86,18 @@ export default function DashboardApp({ onOpenDocsModal }) {
 
   const [currentTheme, setCurrentTheme] = useState(() => {
     try {
-      return localStorage.getItem('traffic_gov_theme') || 'gov-navy';
+      const stored = localStorage.getItem('traffic_modern_theme') || localStorage.getItem('traffic_gov_theme');
+      if (stored === 'gov-light' || stored === 'modern-light') return 'modern-light';
+      return 'modern-dark';
     } catch {
-      return 'gov-navy';
+      return 'modern-dark';
     }
   });
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', currentTheme);
     try {
-      localStorage.setItem('traffic_gov_theme', currentTheme);
+      localStorage.setItem('traffic_modern_theme', currentTheme);
     } catch {
       // ignore storage failures
     }
@@ -807,19 +809,22 @@ export default function DashboardApp({ onOpenDocsModal }) {
             className="ops-panel"
             style={{
               marginBottom: '16px',
-              padding: '20px 24px',
-              border: '2px dashed var(--accent-gold)',
-              backgroundColor: 'var(--badge-bg)',
+              padding: '22px 26px',
+              borderRadius: '16px',
+              border: '1px solid var(--border-medium)',
+              background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.75) 0%, rgba(15, 23, 42, 0.9) 100%)',
+              backdropFilter: 'blur(16px)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.35)',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-              <span style={{ fontSize: '1.25rem' }}>🏛️</span>
-              <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--accent-gold)', margin: 0 }}>
-                GOVERNMENT &amp; ACADEMIC PERCEPTION STATION &bull; AWAITING VIDEO INPUT
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+              <span className="ops-led green" style={{ width: '12px', height: '12px' }} />
+              <h2 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--accent-primary)', margin: 0, letterSpacing: '0.04em' }}>
+                NEUROFLOW NEURAL CONTROLLER • AWAITING VIDEO INPUT
               </h2>
             </div>
-            <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: 1.5, margin: '0 0 14px 0' }}>
-              In accordance with Municipal Traffic Operations and Academic Evaluation standards, the 4-Way Adaptive Signal Controller and YOLOv8 Vehicle Detector only activate once an input source (traffic video file, live CCTV stream, camera, or edge hardware) is connected. Please upload video footage of traffic or load an official test benchmark:
+            <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: '0 0 16px 0' }}>
+              The 4-Way Adaptive Signal Controller and YOLOv8 Vehicle Detection Engine activate dynamically once an input source (traffic video file, live CCTV stream, camera, or edge IoT device) is connected. Select an input source or benchmark feed to launch real-time optimization:
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
@@ -852,7 +857,7 @@ export default function DashboardApp({ onOpenDocsModal }) {
                 className="ops-btn"
                 onClick={() => setMode('mqtt')}
               >
-                📡 Connect Raspberry Pi MQTT Edge Bridge
+                📡 Connect Edge IoT Bridge (MQTT)
               </button>
             </div>
           </div>

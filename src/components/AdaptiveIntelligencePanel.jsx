@@ -95,9 +95,9 @@ export default function AdaptiveIntelligencePanel({
             type="button"
             className="ops-btn"
             onClick={() => onTriggerPolicePriority && onTriggerPolicePriority('south')}
-            title="Inject Police Vehicle emergency preemption on South approach"
+            title="Inject Emergency Vehicle preemption on South approach"
           >
-            Police Escort (South)
+            Emergency Escort (South)
           </button>
           <button
             type="button"
@@ -384,7 +384,7 @@ export default function AdaptiveIntelligencePanel({
               marginBottom: '8px',
             }}
           >
-            CANONICAL SYSTEM ARCHITECTURE MATRIX (PHASE 1 UNIFIED)
+            CANONICAL SYSTEM ARCHITECTURE MATRIX (INTEGRATED)
           </div>
           <table
             className="font-mono-tabular"

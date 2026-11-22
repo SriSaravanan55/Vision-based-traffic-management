@@ -10,7 +10,7 @@ export default function TopBar({
   mqttStatus,
   emergencyLane,
   cycle,
-  currentTheme = 'gov-navy',
+  currentTheme = 'modern-dark',
   onToggleTheme,
 }) {
   const [clockText, setClockText] = useState(() =>
@@ -36,7 +36,7 @@ export default function TopBar({
     statusText = 'STANDBY · AWAITING VIDEO INPUT';
   } else if (inputSourceInfo?.active) {
     ledColor = 'green';
-    statusText = `PERCEPTION ACTIVE · ${inputSourceInfo.label || 'VIDEO FOOTAGE'}`;
+    statusText = `PERCEPTION ACTIVE · ${inputSourceInfo.label || 'VIDEO FEED'}`;
   } else if (mode === 'mqtt') {
     if (mqttStatus?.status === 'connected') {
       ledColor = 'green';
@@ -52,53 +52,62 @@ export default function TopBar({
   };
 
   const junctionEntries = Object.entries(junctions || REAL_WORLD_JUNCTIONS);
+  const isDark = currentTheme === 'modern-dark' || currentTheme === 'gov-navy';
 
   return (
-    <header className="gov-top-header" role="banner">
-      <div className="gov-header-stripe" aria-hidden="true" />
+    <header className="modern-top-header" role="banner">
+      <div className="modern-header-stripe" aria-hidden="true" />
 
       <div className="ops-topbar">
-        <div className="gov-brand-cluster">
-          <div className="gov-seal-icon" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="20" cy="20" r="18" stroke="var(--accent-gold)" strokeWidth="1.8" strokeDasharray="3 2" fill="var(--badge-bg)" />
-              <circle cx="20" cy="20" r="13" stroke="var(--accent-gold)" strokeWidth="1.2" />
-              <circle cx="20" cy="20" r="4.5" fill="var(--accent-gold)" />
-              {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => (
-                <line
-                  key={deg}
-                  x1="20"
-                  y1="20"
-                  x2={20 + 13 * Math.cos((deg * Math.PI) / 180)}
-                  y2={20 + 13 * Math.sin((deg * Math.PI) / 180)}
-                  stroke="var(--accent-gold)"
-                  strokeWidth="0.9"
-                />
-              ))}
+        <div className="modern-brand-cluster">
+          {/* High-Tech Glowing NeuroFlow Neural Hexagon Logo */}
+          <div className="smartflow-logo-badge neuroflow-logo-badge" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Outer Hexagon */}
+              <polygon
+                points="16,2 29,9.5 29,22.5 16,30 3,22.5 3,9.5"
+                stroke="var(--accent-primary)"
+                strokeWidth="2"
+                strokeLinejoin="round"
+                fill="none"
+              />
+              {/* Inner Traffic Neural Node Cross */}
+              <circle cx="16" cy="16" r="3.5" fill="var(--signal-green)" />
+              <line x1="16" y1="6" x2="16" y2="12.5" stroke="var(--accent-primary)" strokeWidth="1.8" strokeLinecap="round" />
+              <line x1="16" y1="19.5" x2="16" y2="26" stroke="var(--accent-primary)" strokeWidth="1.8" strokeLinecap="round" />
+              <line x1="6" y1="16" x2="12.5" y2="16" stroke="var(--accent-primary)" strokeWidth="1.8" strokeLinecap="round" />
+              <line x1="19.5" y1="16" x2="26" y2="16" stroke="var(--accent-primary)" strokeWidth="1.8" strokeLinecap="round" />
+              {/* Signal Aspect Accents */}
+              <circle cx="16" cy="7" r="1.5" fill="var(--signal-red)" />
+              <circle cx="25" cy="16" r="1.5" fill="var(--signal-amber)" />
+              <circle cx="7" cy="16" r="1.5" fill="var(--signal-green)" />
             </svg>
           </div>
 
           <div>
+            <div className="modern-tagline">
+              EDGE AI TRAFFIC ORCHESTRATION
+            </div>
             <h1 className="ops-title">
-              INTELLIGENT TRAFFIC MANAGEMENT SYSTEM &bull; OPERATIONS CONSOLE
+              NEUROFLOW
             </h1>
-            <div className="gov-sub-title">
-              Official Academic &amp; Civil Infrastructure Traffic Management System &bull; IRC:SP:41 &amp; NEMA-TS2 Compliant
+            <div className="modern-sub-title">
+              A Vision &ndash; Based Intelligence Traffic Orchestration Platform With Edge AI and Emergence Prioritization
             </div>
           </div>
         </div>
 
         <div className="ops-telemetry-cluster" style={{ flexWrap: 'wrap', gap: '10px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <label htmlFor="junction-select" className="ops-control-label" style={{ margin: 0, fontWeight: 700 }}>
-              SECTOR / JUNCTION:
+              INTERSECTION:
             </label>
             <select
               id="junction-select"
               className="ops-junction-select"
               value={selectedJunction}
               onChange={(e) => onSelectJunction(e.target.value)}
-              title="Select canonical intersection ID (JCT-01..JCT-04)"
+              title="Select active traffic junction (JCT-01..JCT-04)"
             >
               {junctionEntries.map(([key, jct]) => (
                 <option key={key} value={key}>
@@ -132,49 +141,59 @@ export default function TopBar({
 
           <span aria-hidden="true" style={{ color: 'var(--grid-line)' }}>|</span>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          {/* Modern Theme Switcher */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <button
               type="button"
-              className={`ops-btn ${currentTheme === 'gov-light' ? 'active' : ''}`}
-              style={{ fontSize: '0.72rem', padding: '4px 8px' }}
-              onClick={() => onToggleTheme && onToggleTheme('gov-light')}
-              title="Switch to Government Administrative Portal (Crisp Light Theme)"
+              className={`ops-btn ${!isDark ? 'active' : ''}`}
+              style={{ fontSize: '0.74rem', padding: '5px 10px' }}
+              onClick={() => onToggleTheme && onToggleTheme('modern-light')}
+              title="Switch to Modern Clean Light Theme"
             >
-              🏛️ Govt. Portal (Light)
+              ☀️ Clean Light
             </button>
             <button
               type="button"
-              className={`ops-btn ${currentTheme === 'gov-navy' ? 'active' : ''}`}
-              style={{ fontSize: '0.72rem', padding: '4px 8px' }}
-              onClick={() => onToggleTheme && onToggleTheme('gov-navy')}
-              title="Switch to Civic Command Center (Executive Navy Theme)"
+              className={`ops-btn ${isDark ? 'active' : ''}`}
+              style={{ fontSize: '0.74rem', padding: '5px 10px' }}
+              onClick={() => onToggleTheme && onToggleTheme('modern-dark')}
+              title="Switch to Cyber Dark Glass Theme"
             >
-              🏢 Command Room (Navy)
+              🌙 Cyber Dark
             </button>
           </div>
 
           <button
             type="button"
             className="ops-btn"
-            style={{ fontSize: '0.72rem', padding: '4px 8px', borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
+            style={{
+              fontSize: '0.74rem',
+              padding: '5px 12px',
+              borderColor: 'var(--accent-primary)',
+              color: 'var(--accent-primary)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+            }}
             onClick={handlePrintAudit}
-            title="Print or Export Official Inspection Docket for College Evaluation or Municipal Review"
+            title="Export comprehensive intersection performance report and telemetry docket"
           >
-            📋 Print Audit Docket
+            <span>📊</span>
+            <span>Export Report</span>
           </button>
         </div>
       </div>
 
-      <div className="gov-meta-strip">
-        <span>AUTHORITY: MUNICIPAL TRANSPORT &amp; HIGHWAY ENG. DIVISION</span>
+      <div className="modern-telemetry-strip">
+        <span>PLATFORM: NEUROFLOW ORCHESTRATION ENGINE</span>
         <span aria-hidden="true">&bull;</span>
-        <span>REF: GOV-MTC-2026/ACAD-ITS</span>
+        <span>VISION: YOLOV8 + BYTETRACK MOT</span>
         <span aria-hidden="true">&bull;</span>
-        <span>SPECIFICATION: IRC-SP-41 / NEMA-TS2</span>
+        <span>SIGNAL LOGIC: ADAPTIVE DYNAMIC CLAMPED (15s–45s)</span>
         <span aria-hidden="true">&bull;</span>
-        <span>RESEARCH VALIDATION: SDG-11.2 SUSTAINABLE MOBILITY</span>
+        <span>SUSTAINABILITY: SDG-11 ECO-OPTIMIZED</span>
         <span aria-hidden="true">&bull;</span>
-        <span style={{ color: 'var(--signal-green)', fontWeight: 700 }}>VERIFIED: LEVEL 4 AUDIT CLEARANCE</span>
+        <span style={{ color: 'var(--signal-green)', fontWeight: 700 }}>STATUS: 4-WAY ACTIVE SYNCHRONIZATION</span>
       </div>
     </header>
   );

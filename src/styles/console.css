@@ -1,27 +1,30 @@
 /* ==========================================================================
-   OFFICIAL GOVERNMENT & ACADEMIC OPERATIONS CONSOLE STYLES
-   Designed for:
-   - Municipal Corporations, Road Transport Authorities, Police Command Rooms
-   - University Engineering Departments, College Thesis & Project Vivas
-   - Universal Arial, Helvetica, sans-serif typography
+   NEUROFLOW MODERN OPERATIONS CONSOLE STYLES
+   - Clean, attractive, high-contrast, modern interface
+   - Glassmorphic panels, soft layered shadows, rounded controls
+   - Responsive, accessible, high-tech cyber aesthetic
    ========================================================================== */
 
 .ops-shell {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  max-width: 1600px;
+  max-width: 1680px;
   margin: 0 auto;
-  padding: 0 16px 24px;
+  padding: 0 20px 32px;
 }
 
-/* Institutional Top Header */
+/* Modern Glass Top Header */
+.modern-top-header,
 .gov-top-header {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   background-color: var(--header-bg);
   border: 1px solid var(--border-card);
   border-top: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.25), 0 2px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
 }
 
 .ops-topbar {
@@ -29,57 +32,66 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 12px 18px;
+  padding: 14px 22px;
   flex-wrap: wrap;
 }
 
+.modern-brand-cluster,
 .gov-brand-cluster {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
+.neuroflow-logo-badge,
+.smartflow-logo-badge,
 .gov-seal-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(99, 102, 241, 0.22) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
   flex-shrink: 0;
 }
 
+.modern-tagline,
 .gov-super-title {
-  font-family: Arial, Helvetica, sans-serif !important;
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  color: var(--accent-primary);
   text-transform: uppercase;
 }
 
 .ops-title {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: var(--text-header);
   margin: 2px 0 1px 0;
   white-space: nowrap;
 }
 
+.modern-sub-title,
 .gov-sub-title {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
+  font-weight: 500;
   color: var(--text-muted);
 }
 
+.modern-telemetry-strip,
 .gov-meta-strip {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 18px;
-  background-color: var(--badge-bg);
+  gap: 12px;
+  padding: 8px 22px;
+  background-color: var(--bg-canvas-subtle);
   border-top: 1px solid var(--grid-line-subtle);
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--text-muted);
@@ -90,13 +102,17 @@
   background-color: var(--bg-input);
   color: var(--accent-primary);
   border: 1px solid var(--border-card);
-  padding: 6px 10px;
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.78rem;
+  padding: 7px 12px;
+  font-size: 0.8rem;
   font-weight: 600;
-  border-radius: 3px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: border-color 0.15s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.ops-junction-select:hover {
+  border-color: var(--accent-primary);
 }
 
 .ops-junction-select:focus-visible {
@@ -115,9 +131,12 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   color: var(--text-secondary);
+  background: var(--bg-canvas-subtle);
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-hairline);
 }
 
 .ops-led {
@@ -126,35 +145,38 @@
   border-radius: 50%;
   display: inline-block;
   flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
 .ops-led.green {
   background-color: var(--signal-green);
-  box-shadow: 0 0 8px var(--signal-green);
+  box-shadow: 0 0 10px var(--signal-green);
 }
 
 .ops-led.amber {
   background-color: var(--signal-amber);
-  box-shadow: 0 0 8px var(--signal-amber);
+  box-shadow: 0 0 10px var(--signal-amber);
 }
 
 .ops-led.red {
   background-color: var(--signal-red);
-  box-shadow: 0 0 8px var(--signal-red);
+  box-shadow: 0 0 10px var(--signal-red);
 }
 
-/* Control Bar */
+/* Modern Control Bar */
 .ops-controlbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 14px;
-  padding: 10px 16px;
+  gap: 14px;
+  margin-bottom: 16px;
+  padding: 12px 18px;
   background-color: var(--bg-panel);
   border: 1px solid var(--border-card);
+  border-radius: 14px;
   flex-wrap: wrap;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
 }
 
 .ops-control-group {
@@ -165,8 +187,7 @@
 }
 
 .ops-control-label {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   color: var(--text-muted);
@@ -178,19 +199,25 @@
   background-color: var(--btn-bg);
   color: var(--btn-text);
   border: 1px solid var(--btn-border);
-  padding: 6px 12px;
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.76rem;
+  padding: 7px 14px;
+  font-size: 0.78rem;
   font-weight: 600;
-  border-radius: 3px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .ops-btn:hover:not(:disabled) {
   border-color: var(--accent-primary);
   color: var(--accent-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ops-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .ops-btn:disabled {
@@ -202,15 +229,18 @@
   background-color: var(--btn-active-bg);
   border-color: var(--btn-active-bg);
   color: var(--btn-active-text);
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.35);
 }
 
 .ops-btn.emergency-btn {
   border-color: var(--signal-red);
   color: var(--signal-red);
+  background-color: rgba(244, 63, 94, 0.06);
 }
 
 .ops-btn.emergency-btn:hover:not(:disabled) {
   background-color: var(--signal-red-dim);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.3);
 }
 
 .ops-btn.emergency-btn.active {
@@ -218,47 +248,51 @@
   border-color: var(--signal-red);
   color: #ffffff;
   font-weight: 700;
+  box-shadow: 0 0 16px rgba(244, 63, 94, 0.5);
 }
 
-/* Emergency Banner */
+/* Modern Emergency Notification Banner */
 .ops-emergency-banner {
-  margin-bottom: 14px;
-  padding: 12px 18px;
+  margin-bottom: 16px;
+  padding: 14px 20px;
   background-color: var(--signal-red-dim);
   border: 1.5px solid var(--signal-red);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+  box-shadow: 0 0 20px rgba(244, 63, 94, 0.25);
 }
 
 .ops-emergency-banner-title {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
   color: var(--signal-red);
 }
 
 .ops-emergency-right-of-way {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--signal-green);
 }
 
-/* Panels & Cards */
+/* Modern Panels & Cards with Glassmorphism */
 .ops-panel,
 .ops-card {
   background-color: var(--bg-panel);
   border: 1px solid var(--border-card);
-  padding: 16px;
+  border-radius: 14px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.18), 0 2px 6px -1px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .ops-panel-header {
@@ -266,23 +300,22 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding-bottom: 10px;
-  margin-bottom: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
   border-bottom: 1px solid var(--grid-line-subtle);
 }
 
 .ops-panel-title {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.86rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
   color: var(--accent-primary);
   margin: 0;
 }
 
 .ops-panel-subtitle {
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 0.74rem;
+  font-size: 0.76rem;
+  font-weight: 500;
   color: var(--text-muted);
 }
 
@@ -290,18 +323,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: Arial, Helvetica, sans-serif !important;
   font-variant-numeric: tabular-nums;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 
-/* Bottom Event Log & SDG 11 Telemetry */
+/* Modern Bottom Grid & Event Logs */
 .ops-bottom-grid {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 18px;
+  margin-top: 18px;
 }
 
 @media (max-width: 1080px) {
@@ -311,24 +343,30 @@
 }
 
 .ops-log-list {
-  max-height: 240px;
+  max-height: 250px;
   overflow-y: auto;
-  font-family: Arial, Helvetica, sans-serif !important;
   font-variant-numeric: tabular-nums;
   font-size: 0.76rem;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding-right: 4px;
 }
 
 .ops-log-entry {
   display: grid;
-  grid-template-columns: 92px 86px 1fr;
+  grid-template-columns: 92px 90px 1fr;
   gap: 10px;
-  padding: 6px 8px;
+  padding: 8px 12px;
   background-color: var(--bg-canvas-subtle);
   border-left: 3px solid var(--border-card);
+  border-radius: 0 8px 8px 0;
   align-items: baseline;
+  transition: background-color 0.15s ease;
+}
+
+.ops-log-entry:hover {
+  background-color: var(--bg-tally-item);
 }
 
 .ops-log-entry.emergency {
